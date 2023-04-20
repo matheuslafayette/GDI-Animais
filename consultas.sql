@@ -6,7 +6,7 @@ WHERE EXISTS (SELECT I.CPF
                FROM INVESTE I
                WHERE I.CPF = P.CPF
                GROUP BY I.CPF
-               HAVING COUNT() > 1); 
+               HAVING COUNT(*) > 1); 
 
 --Junção interna: 2
 --NOME DO ANIMA, DO SEU CUIDADOR, DA SUA FAZENDA E SEU PROPRIETARIO
