@@ -26,7 +26,7 @@ ORDER BY F.ID
 --PROJETAR O NOME E ESPECIE DOS ANIMAIS CUJA ALIMENTAÇÃO CONTÉM CENOURAS
 SELECT ANI.NOME, ANI.ESPECIE
 FROM ANIMAL ANI 
-WHERE EXISTS (SELECT 
+WHERE EXISTS (SELECT *
               FROM ALIMENTACAO AL 
               WHERE AL.CODIGO = ANI.CODIGO
               AND AL.ALIMENTACAO = 'Cenouras')
@@ -36,11 +36,11 @@ WHERE EXISTS (SELECT
 SELECT F.NOME
 FROM FUNCIONARIO F
 WHERE NOT EXISTS (SELECT FA.COD_PROPRIEDADE
-                      FROM FAZENDA FA
-                     WHERE F.COD_PROPRIEDADE = FA.COD_PROPRIEDADE 
-                   AND EXISTS(SELECT P.CPF
-                            FROM PROPRIETARIO P
-                            WHERE FA.CPF = P.CPF AND P.NOME = 'Cruise'))
+                  FROM FAZENDA FA
+                  WHERE F.COD_PROPRIEDADE = FA.COD_PROPRIEDADE 
+                  AND EXISTS(SELECT P.CPF
+                        FROM PROPRIETARIO P
+                        WHERE FA.CPF = P.CPF AND P.NOME = 'Cruise'))
 
 --Subconsulta do tipo escalar: 6
 --O numero de cadastro dos turistas que se hospedaram na "Rua A, 10"
